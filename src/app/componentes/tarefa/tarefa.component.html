@@ -1,1 +1,20 @@
-<p>tarefa works!</p>
+<section class="container d-flex flex-column align-items-center">
+    <div class="header d-flex align-items-center justify-content-between w-100">
+        <div class="d-flex">
+            <img src="assets/not-checked.png" class="bolinha-nao-concluida">
+            <h2>{{tarefa.titulo}}</h2>
+        </div>
+        <img src="assets/seta.png" class="seta-encolher">
+        <!-- <img src="assets/seta2.png" class="seta-encolher"> -->
+    </div>
+
+    <div class="main">
+        <h3>Descrição</h3>
+        <p>{{tarefa.descricao}}</p>
+    </div>
+    
+    <div class="footer d-flex justify-content-end w-100">
+        <img src="assets/alterar.png" class="editar">
+        <img src="assets/lixeira.png" class="lixeira">
+    </div>
+</section>

@@ -1,0 +1,47 @@
+h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-left: 0.8rem;
+}
+
+h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
+.container {
+    box-shadow: 0px 0px 10px 0px rgb(185, 185, 185);
+    width: 90%;
+    border-radius: 10px;
+    padding-top: 0.5rem;
+}
+
+.bolinha-nao-concluida {
+    width: 3rem;
+    object-fit: contain;
+}
+
+.seta-encolher {
+    width: 1.5rem;
+    object-fit: contain;
+    margin-right: 0.5rem;
+}
+
+.main {
+    width: 95%;
+}
+
+p {
+    color: #797979;
+    word-break: break-word;
+}
+
+.editar, .lixeira {
+    width: 1.2rem;
+    object-fit: contain;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
