@@ -1,0 +1,9 @@
+<section>
+    <header class="d-flex justify-content-center align-items-center">
+        <h1 class="mt-5">Tarefas</h1>
+    </header>
+    
+    <main>
+        <app-tarefa *ngFor="let tarefa of tarefas" [tarefa]="tarefa"></app-tarefa>
+    </main>
+</section>
