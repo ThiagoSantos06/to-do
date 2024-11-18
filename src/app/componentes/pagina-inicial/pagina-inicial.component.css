@@ -1,0 +1,15 @@
+section {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding-bottom: 3rem;
+}
+
+footer {
+    flex-grow: 1;
+}
+
+.criarTarefa {
+    object-fit: contain;
+    width: 5rem;
+}
