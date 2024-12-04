@@ -8,6 +8,7 @@ export class Tarefa {
     private _editavel: boolean
     private _tituloEditado: string
     private _descricaoEditada: string
+    private _identificador: string
 
     constructor (tarefaDTO: TarefaDTO) {
         this._oculta = true
@@ -17,6 +18,16 @@ export class Tarefa {
         this._concluida = tarefaDTO.concluida
         this._tituloEditado = tarefaDTO.titulo
         this._descricaoEditada = tarefaDTO.descricao
+        this._identificador = tarefaDTO.identificador
+    }
+
+    gerarDTO(): TarefaDTO {
+        return {
+            titulo: this._titulo,
+            descricao: this._descricao,
+            concluida: this._concluida,
+            identificador: this._identificador
+        } as TarefaDTO
     }
 
     concluir() {
@@ -50,7 +61,19 @@ export class Tarefa {
         this._titulo = this._tituloEditado
         this._descricao = this._descricaoEditada
     }
-    
+
+    houveMudança() : boolean {
+        if (this._titulo != this._tituloEditado) {
+            return true
+        }
+
+        else if (this._descricao != this._descricaoEditada) {
+            return true
+        }
+
+        return false
+    }
+
     public get estaOculta() : boolean {
         return this._oculta
     }
@@ -77,6 +100,10 @@ export class Tarefa {
 
     public get descricaoEditada() : string {
         return this._descricaoEditada
+    }
+
+    public get identificador() : string {
+        return this._identificador
     }
 
     public set titulo(tituloEditado : string) {
