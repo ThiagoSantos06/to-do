@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { TarefaComponent } from "../tarefa/tarefa.component";
 import { NgFor } from '@angular/common';
 import { ModalCriarTarefaComponent } from "../modal-criar-tarefa/modal-criar-tarefa.component";
 import { Tarefa } from '../../domain/task/Tarefa';
 import { TarefaDTO } from '../../domain/task/TarefaDTO';
+import { HttpClient } from '@angular/common/http';
+import { TarefaRest } from '../../rest/TarefaRest';
 
 @Component({
   selector: 'app-pagina-inicial',
@@ -15,15 +17,24 @@ import { TarefaDTO } from '../../domain/task/TarefaDTO';
 export class PaginaInicialComponent {
   tarefas: Tarefa[] = []
 
+  constructor (private http: HttpClient, private tarefaRest: TarefaRest) {
+
+  }
+  
+  buscarTarefas() { 
+    this.tarefaRest.listarTarefas().subscribe({
+        next: (body: any) => {
+          body.content.forEach((tarefaDTO: TarefaDTO) => {
+            this.tarefas.push(new Tarefa (tarefaDTO))
+          });
+        }, 
+        error: (error) => {
+          console.error("Erro ao buscar a tarefa:", error)
+        }
+    })
+  }
+
   ngOnInit() {
-    const primeiraTarefaDTO: TarefaDTO = {
-      titulo: "Estudar",
-      descricao: "Estudar programação, HTML, Javascript, CSS, Angular, React, VUE,Ruby, Lua, Python, React JS, Express e tudo mais..",
-      concluida: false,
-    }
-
-    const primeiraTarefa: Tarefa = new Tarefa (primeiraTarefaDTO)
-
-    this.tarefas.push(primeiraTarefa)
+    this.buscarTarefas()
   }
 }
